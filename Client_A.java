@@ -1,29 +1,13 @@
-package client;
-
 import java.io.*;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.*;
+import java.net.*;
+import java.util.Scanner;
 
 public class Client_A {
-
-    public static void main(String[] args) {
-
-        try {
-            Socket serverSocketLol = new Socket("localhost", 22222);
-            //Reads from server
-            BufferedReader reader = new BufferedReader(new InputStreamReader(serverSocketLol.getInputStream()));
-            //Writes to server
-            PrintWriter writer = new PrintWriter(serverSocketLol.getOutputStream(), true);
-            System.out.println(reader.readLine());
-            //Client input system
-            Scanner consoleInput = new Scanner(System.in);
-
-            while (true) {
-                System.out.println("Server : " + reader.readLine());
-                System.out.print("Client: ");
-                writer.println(consoleInput.nextLine());
-            }
+    public static Socket socket = null;
+    public static void main(String[] args){
+        try{
+            socket = new Socket("localhost",16000);
+            System.out.println(new StringBuilder().append("Connection to Server over port: ").append(socket.getPort()).append(" established \n").toString());
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -31,5 +15,24 @@ public class Client_A {
             e.printStackTrace();
         }
 
+        BufferedReader inputStream = null;
+        PrintWriter outputStream = null;
+        Scanner consoleInput = new Scanner(System.in);
+
+        try {
+            inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            outputStream = new PrintWriter(socket.getOutputStream(),true);
+
+
+            while (true){
+
+                System.out.print("Client A: ");
+                outputStream.println(consoleInput.nextLine());
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
