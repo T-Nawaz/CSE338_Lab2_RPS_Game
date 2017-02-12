@@ -21,7 +21,7 @@ public class Server {
             gameServer = new ServerSocket(port);
             System.out.println("Game Server Online");
         }catch (IOException e){
-            System.out.println("Error while connecting through port" + port);
+            System.out.println(new StringBuilder().append("Error while connecting through port").append(port).toString());
             System.exit(-1);
         }
 
@@ -54,23 +54,23 @@ public class Server {
                     clientBchoice = Integer.parseInt(clientBin.readLine());
                     System.out.println(clientBchoice);
 
-                    if((clientAchoice==2 && clientBchoice==1) || (clientAchoice==3 && clientBchoice==2) || (clientAchoice==1 && clientBchoice==3)){
-                        clientAout.println("Player A has won");
-                        clientBout.println("Player A has won");
-                        System.out.println("Player A has won");
+                    if((clientAchoice == 2 && clientBchoice==1) || (clientAchoice == 3 && clientBchoice == 2) || (clientAchoice == 1 && clientBchoice == 3)){
+                        clientAout.println("Player A has won\n");
+                        clientBout.println("Player A has won\n");
+                        System.out.println("Player A has won\n");
                     }
 
 
-                    if((clientBchoice==2 && clientAchoice==1) || (clientBchoice==3 && clientAchoice==2) || (clientBchoice==1 && clientAchoice==3)){
-                        clientAout.println("Player B has won");
-                        clientBout.println("Player B has won");
-                        System.out.println("Player B has won");
+                    if((clientBchoice == 2 && clientAchoice == 1) || (clientBchoice == 3 && clientAchoice == 2) || (clientBchoice == 1 && clientAchoice == 3)){
+                        clientAout.println("Player B has won\n");
+                        clientBout.println("Player B has won\n");
+                        System.out.println("Player B has won\n");
                     }
 
                     if(clientBchoice == clientAchoice) {
-                        clientAout.println("Match Draw");
-                        clientBout.println("Match Draw");
-                        System.out.println("Match Draw");
+                        clientAout.println("Match Draw \n");
+                        clientBout.println("Match Draw \n");
+                        System.out.println("Match Draw \n");
                             }
 
                 }

@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.text.MessageFormat;
 import java.util.Scanner;
 
 public class Client_A {
@@ -17,18 +18,20 @@ public class Client_A {
 
         BufferedReader inputStream = null;
         PrintWriter outputStream = null;
-        Scanner consoleInput = new Scanner(System.in);
+        Scanner manualInput = new Scanner(System.in);
 
         try {
             inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             outputStream = new PrintWriter(socket.getOutputStream(),true);
-
+            System.out.print("Enter your name: ");
+            String name = manualInput.nextLine();
 
             while (true){
 
-                System.out.print("Client A: ");
-                outputStream.println(consoleInput.nextLine());
-
+                System.out.print(new StringBuilder().append("Client A (").append(name).append("): ").toString());
+                outputStream.println(manualInput.nextLine());
+                System.out.print("Server: ");
+                System.out.println(MessageFormat.format("{0}\n", inputStream.readLine()));
             }
 
         } catch (IOException e) {

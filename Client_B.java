@@ -17,17 +17,20 @@ public class Client_B {
 
         BufferedReader inputStream = null;
         PrintWriter outputStream = null;
-        Scanner consoleInput = new Scanner(System.in);
+        Scanner manualInput = new Scanner(System.in);
 
         try {
             inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             outputStream = new PrintWriter(socket.getOutputStream(),true);
-
+            System.out.print("Enter your name: ");
+            String name = manualInput.nextLine();
 
             while (true){
 
-                System.out.print("Client B: ");
-                outputStream.println(consoleInput.nextLine());
+                System.out.print(new StringBuilder().append("Client B (").append(name).append("): ").toString());
+                outputStream.println(manualInput.nextLine());
+                System.out.print("Server: ");
+                System.out.println(new StringBuilder().append(inputStream.readLine()).append("\n").toString());
             }
 
         } catch (IOException e) {
