@@ -1,6 +1,10 @@
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
+/*
+  YOU WILL FIND 100% MATCH WITH THE FOLLOWING REPOSITORY
+  https://github.com/T-Nawaz/CSE338_Lab2_RPS_Game
+  BECAUSE THAT REPOSITORY IS MINE
+*/
 
 public class Server {
 
@@ -44,33 +48,36 @@ public class Server {
 
                 int clientAchoice, clientBchoice;
 
+                String nameA = clientAin.readLine();
+                String nameB = clientBin.readLine();
+
                 while(clientSocketA.isConnected() && clientSocketB.isConnected()){
 
-                    System.out.print("ClientA: ");
+                    System.out.print("ClientA ("+ nameA + "): ");
                     clientAchoice = Integer.parseInt(clientAin.readLine());
                     System.out.println(clientAchoice);
 
-                    System.out.print("ClientB: ");
+                    System.out.print("ClientB ("+ nameB + "): ");
                     clientBchoice = Integer.parseInt(clientBin.readLine());
                     System.out.println(clientBchoice);
 
                     if((clientAchoice == 2 && clientBchoice==1) || (clientAchoice == 3 && clientBchoice == 2) || (clientAchoice == 1 && clientBchoice == 3)){
-                        clientAout.println("Player A has won\n");
-                        clientBout.println("Player A has won\n");
-                        System.out.println("Player A has won\n");
+                        clientAout.println("You won this round\n");
+                        clientBout.println("You lost this round\n");
+                        System.out.println(nameA +" won this round\nEnd of round\n");
                     }
 
 
                     if((clientBchoice == 2 && clientAchoice == 1) || (clientBchoice == 3 && clientAchoice == 2) || (clientBchoice == 1 && clientAchoice == 3)){
-                        clientAout.println("Player B has won\n");
-                        clientBout.println("Player B has won\n");
-                        System.out.println("Player B has won\n");
+                        clientAout.println("You lost this round\n");
+                        clientBout.println("You won this round\n");
+                        System.out.println(nameB +" won this round\nEnd of round\n");
                     }
 
                     if(clientBchoice == clientAchoice) {
                         clientAout.println("Match Draw \n");
                         clientBout.println("Match Draw \n");
-                        System.out.println("Match Draw \n");
+                        System.out.println("Match ended in a draw\nEnd of round \n");
                             }
 
                 }

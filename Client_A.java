@@ -2,6 +2,11 @@ import java.io.*;
 import java.net.*;
 import java.text.MessageFormat;
 import java.util.Scanner;
+/*
+  YOU WILL FIND 100% MATCH WITH THE FOLLOWING REPOSITORY
+  https://github.com/T-Nawaz/CSE338_Lab2_RPS_Game
+  BECAUSE THAT REPOSITORY IS MINE
+*/
 
 public class Client_A {
     public static Socket socket = null;
@@ -25,6 +30,7 @@ public class Client_A {
             outputStream = new PrintWriter(socket.getOutputStream(),true);
             System.out.print("Enter your name: ");
             String name = manualInput.nextLine();
+            outputStream.println(name);
 
             while (true){
 
